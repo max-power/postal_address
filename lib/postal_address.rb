@@ -31,7 +31,7 @@ class PostalAddress
   end
 
   def to_h
-    { recipient: recipient, street: street, zip: zip, city: city, state: state, country: country }
+    { :recipient=>recipient, :street=>street, :zip=>zip, :city=>city, :state=>state, :country=>country }
   end
   
   def country_code=(code)
