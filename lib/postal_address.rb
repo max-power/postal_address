@@ -5,6 +5,10 @@ class PostalAddress
   class << self
     attr_reader :home_country
     
+    def home_country=(code)
+      @home_country = code && code.to_s.downcase
+    end
+        
     def formats
       @formats ||= YAML.load_file("data/address_formats.yml")
     end
@@ -13,12 +17,26 @@ class PostalAddress
       @country_names ||= YAML.load_file("data/country_names.yml")
     end
     
-    def home_country=(code)
-      @home_country = code && code.to_s.downcase
+    private
+    
+    def attribute(name, *aliases)
+      attr_accessor name
+      aliases.each { |a| define_attribute_alias(a, name) }
+    end
+    
+    def define_attribute_alias(new_name, original)
+      alias_method new_name, original
+      alias_method :"#{new_name}=", :"#{original}="
     end
   end
 
-  attr_accessor :recipient, :street, :zip, :city, :state, :country_code
+  # define the postal address attributes and aliases for easier assignment
+  attribute :recipient
+  attribute :street,       :street_address
+  attribute :zip,          :zip_code, :postal_code, :postcode
+  attribute :state,        :region, :province, :territory, :administrative_area_level_1
+  attribute :city,         :locality
+  attribute :country_code, :country_id   # expects ISO 3166 Alpha 2 codes
 
   def initialize(attributes={})
     attributes.each do |attr, value|
