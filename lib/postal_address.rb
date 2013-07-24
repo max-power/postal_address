@@ -39,7 +39,7 @@ class PostalAddress
   end
   
   def country
-    in_home_country? ? nil : self.class.country_names[country_code]
+     self.class.country_names[country_code] unless in_home_country?
   end
 
   private
