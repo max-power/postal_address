@@ -10,7 +10,7 @@ class PostalAddress
     end
   
     def country_names
-      @country_name ||= YAML.load_file("data/country_names.yml")
+      @country_names ||= YAML.load_file("data/country_names.yml")
     end
     
     def home_country=(code)
