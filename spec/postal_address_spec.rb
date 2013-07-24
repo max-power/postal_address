@@ -104,5 +104,13 @@ describe PostalAddress do
         address.send(alias_name).must_equal address.zip
       end
     end
+    
+    it "should return html" do
+      address.to_html.must_equal "<div itemscope itemtype=\"http://schema.org/PostalAddress\"><span itemprop=\"name\">Tobias Füncke</span><br><span itemprop=\"streetAddress\">101 Broadway</span><br><span itemprop=\"addressLocality\">New York City</span> <span itemprop=\"addressRegion\">NY</span> <span itemprop=\"postalCode\">10002</span><br><span itemprop=\"addressCountry\">United States of America</span></div>"
+    end
+    
+    it "should return custom html" do
+      address.to_html(:section, itemprop: 'address').must_equal "<section itemscope itemtype=\"http://schema.org/PostalAddress\" itemprop=\"address\"><span itemprop=\"name\">Tobias Füncke</span><br><span itemprop=\"streetAddress\">101 Broadway</span><br><span itemprop=\"addressLocality\">New York City</span> <span itemprop=\"addressRegion\">NY</span> <span itemprop=\"postalCode\">10002</span><br><span itemprop=\"addressCountry\">United States of America</span></section>"
+    end
   end
 end
