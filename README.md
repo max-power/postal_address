@@ -1,6 +1,8 @@
-# PostalAddress
+# PostalAddress 
 
 International postal address formatting
+
+[![Build Status](https://travis-ci.org/max-power/postal_address.png)](https://travis-ci.org/max-power/postal_address)
 
 ## Installation
 
