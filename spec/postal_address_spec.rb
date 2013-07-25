@@ -110,7 +110,7 @@ describe PostalAddress do
     end
     
     it "should return custom html" do
-      address.to_html(:section, itemprop: 'address').must_equal "<section itemprop=\"address\" itemscope itemtype=\"http://schema.org/PostalAddress\"><span itemprop=\"name\">Tobias Füncke</span><br><span itemprop=\"streetAddress\">101 Broadway</span><br><span itemprop=\"addressLocality\">New York City</span> <span itemprop=\"addressRegion\">NY</span> <span itemprop=\"postalCode\">10002</span><br><span itemprop=\"addressCountry\">United States of America</span></section>"
+      address.to_html(tag: :section, itemprop: 'address').must_equal "<section itemprop=\"address\" itemscope itemtype=\"http://schema.org/PostalAddress\"><span itemprop=\"name\">Tobias Füncke</span><br><span itemprop=\"streetAddress\">101 Broadway</span><br><span itemprop=\"addressLocality\">New York City</span> <span itemprop=\"addressRegion\">NY</span> <span itemprop=\"postalCode\">10002</span><br><span itemprop=\"addressCountry\">United States of America</span></section>"
     end
   end
 end
