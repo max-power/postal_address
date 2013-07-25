@@ -30,10 +30,43 @@ Or install it yourself as:
     }
 
     PostalAddress.new(address).to_s
+     
+    Tobias Füncke
+    101 Broadway
+    New York City NY 10002
+    United States of America
+      
+    PostalAddress.new(address).to_html
+    
+    <p itemscope itemtype="http://schema.org/PostalAddress">
+      <span itemprop="name">Tobias Füncke</span>
+      <br>
+      <span itemprop="streetAddress">101 Broadway</span>
+      <br>
+      <span itemprop="addressLocality">New York City</span>
+      <span itemprop="addressRegion">NY</span>
+      <span itemprop="postalCode">10002</span>
+      <br>
+      <span itemprop="addressCountry">United States of America</span>
+    </p>
+    
     
 Set a home country (country names are not display for those addresses)
 
-    PostalAddress.home_country = 'de'
+    PostalAddress.home_country = 'us'
+    
+    p = PostalAddress.new(address)
+    p.to_html(tag: 'section', itemprop: 'address')
+
+    <section itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+      <span itemprop="name">Tobias Füncke</span>
+      <br>
+      <span itemprop="streetAddress">101 Broadway</span>
+      <br>
+      <span itemprop="addressLocality">New York City</span>
+      <span itemprop="addressRegion">NY</span>
+      <span itemprop="postalCode">10002</span>
+    </section>
 
 ## Contributing
 
