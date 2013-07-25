@@ -16,7 +16,7 @@ class PostalAddress
 
     def to_html(params={})
       address = format(attributes(:html)).gsub("\n", "<br>")
-      content_tag((params.delete(:tag) || :div), address, params.merge(itemscope: nil, itemtype: 'http://schema.org/PostalAddress'))
+      content_tag((params.delete(:tag) || :p), address, params.merge(itemscope: nil, itemtype: 'http://schema.org/PostalAddress'))
     end
 
     def country_code=(code)
