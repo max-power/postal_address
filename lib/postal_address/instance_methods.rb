@@ -26,6 +26,10 @@ class PostalAddress
     def country
       @country = self.class.country_names[country_code] unless in_home_country?
     end
+    
+    def in_home_country?
+      self.class.home_country == country_code
+    end
 
     private
 
@@ -35,10 +39,6 @@ class PostalAddress
 
     def address_format
       self.class.formats[country_code] || self.class.formats[state ? 'us' : 'de']
-    end
-
-    def in_home_country?
-      self.class.home_country == country_code
     end
 
     def attributes(html=false)
