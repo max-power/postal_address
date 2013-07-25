@@ -4,4 +4,6 @@ require 'bundler/setup'
 
 require 'minitest/autorun'
 require 'minitest/spec'
+require 'turn/autorun'
+
 require 'postal_address'
