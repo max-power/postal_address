@@ -9,11 +9,11 @@ class PostalAddress
     end
     
     def formats
-      @formats ||= YAML.load_file("data/address_formats.yml")
+      @formats ||= load_yaml('address_formats')
     end
     
     def country_names
-      @country_names ||= YAML.load_file("data/country_names.yml")
+      @country_names ||= load_yaml('country_names')
     end
     
     def attributes
@@ -31,6 +31,10 @@ class PostalAddress
     
     def alias_attribute_writer(original, aliases)
       aliases.each { |name| alias_method :"#{name}=", :"#{original}=" }
+    end
+    
+    def load_yaml(filename)
+      YAML.load_file(File.join(File.dirname(__FILE__), "..", "..", "data", "#{filename}.yml"))
     end
   end
 end
