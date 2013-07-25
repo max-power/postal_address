@@ -5,13 +5,13 @@ require "postal_address/instance_methods"
 class PostalAddress
   extend ClassMethods
   include InstanceMethods
-
+  
   # define the postal address attributes and aliases for easier assignment
-  # attribute(name, alias1, alias2, ...)
-  attribute :recipient
-  attribute :street,       :street_address
-  attribute :zip,          :zip_code, :postal_code, :postcode
-  attribute :state,        :region, :province, :territory, :administrative_area_level_1
-  attribute :city,         :locality
-  attribute :country_code, :country_id   # expects ISO 3166 Alpha 2 codes
+  attribute :recipient,    itemprop: 'name'
+  attribute :street,       itemprop: 'streetAddress',   alias: [:street_address]
+  attribute :zip,          itemprop: 'postalCode',      alias: [:zip_code, :postal_code, :postcode]
+  attribute :state,        itemprop: 'addressRegion',   alias: [:region, :province, :territory, :administrative_area_level_1]
+  attribute :city,         itemprop: 'addressLocality', alias: [:locality]
+  attribute :country_code, itemprop: 'addressCountry',  alias: [:country_id] # expects ISO 3166 Alpha 2 codes
+  attribute :country,      itemprop: 'addressCountry',  writer: false, reader: false
 end
