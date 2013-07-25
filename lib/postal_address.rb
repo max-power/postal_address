@@ -12,6 +12,6 @@ class PostalAddress
   attribute :zip,          itemprop: 'postalCode',      alias: [:zip_code, :postal_code, :postcode]
   attribute :state,        itemprop: 'addressRegion',   alias: [:region, :province, :territory, :administrative_area_level_1]
   attribute :city,         itemprop: 'addressLocality', alias: [:locality]
-  attribute :country_code, itemprop: 'addressCountry',  alias: [:country_id] # expects ISO 3166 Alpha 2 codes
+  attribute :country_code, itemprop: 'addressCountry',  alias: [:country_id], writer: false
   attribute :country,      itemprop: 'addressCountry',  writer: false, reader: false
 end
