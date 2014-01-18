@@ -15,11 +15,7 @@ module Postal
     end
     
     def country
-      @country ||= Postal.country_names[country_code] unless in_home_country?
-    end
-    
-    def in_home_country?
-      Postal.home_country == country_code
+      @country ||= Postal.country_names[country_code]
     end
 
     def to_h
