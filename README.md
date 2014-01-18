@@ -29,14 +29,14 @@ Or install it yourself as:
       country_code: 'us'
     }
 
-    PostalAddress.new(address).to_s
+    Postal::Address.new(address).to_s
      
     Tobias Füncke
     101 Broadway
     New York City NY 10002
     United States of America
       
-    PostalAddress.new(address).to_html
+    Postal::Address.new(address).to_html
     
     <p itemscope itemtype="http://schema.org/PostalAddress">
       <span itemprop="name">Tobias Füncke</span>
@@ -53,9 +53,9 @@ Or install it yourself as:
     
 Set a home country (country names are not display for those addresses)
 
-    PostalAddress.home_country = 'us'
+    Postal.home_country = 'us'
     
-    p = PostalAddress.new(address)
+    p = Postal::Address.new(address)
     p.to_html(tag: 'section', itemprop: 'address')
 
     <section itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
@@ -67,6 +67,14 @@ Set a home country (country names are not display for those addresses)
       <span itemprop="addressRegion">NY</span>
       <span itemprop="postalCode">10002</span>
     </section>
+    
+    
+Standalone AddressFormatter usage:
+
+    Postal::AddressFormatter::Text.new(address).render
+    
+    Postal::AddressFormatter::HTML.new(address).render(tag: 'section', itemprop: 'address')
+
 
 ## Contributing
 

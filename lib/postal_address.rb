@@ -1,17 +1,32 @@
+require "yaml"
 require "postal_address/version"
-require "postal_address/class_methods"
-require "postal_address/instance_methods"
+require "postal_address/address"
+require "postal_address/address_formatter"
 
-class PostalAddress
-  extend ClassMethods
-  include InstanceMethods
+module Postal
+  class << self
+    attr_accessor :home_country
+    
+    def home_country=(code)
+      @home_country = sanitize(code)
+    end
+
+    def sanitize(code)
+      code && code.to_s.downcase
+    end
+    
+    def address_formats
+      @address_formats ||= load_yaml('address_formats')
+    end
   
-  # define the postal address attributes and aliases for easier assignment
-  attribute :recipient,    itemprop: 'name'
-  attribute :street,       itemprop: 'streetAddress',   alias: [:street_address]
-  attribute :zip,          itemprop: 'postalCode',      alias: [:zip_code, :postal_code, :postcode]
-  attribute :state,        itemprop: 'addressRegion',   alias: [:region, :province, :territory, :administrative_area_level_1]
-  attribute :city,         itemprop: 'addressLocality', alias: [:locality]
-  attribute :country_code, itemprop: 'addressCountry',  alias: [:country_id], writer: false
-  attribute :country,      itemprop: 'addressCountry',  writer: false, reader: false
+    def country_names
+      @country_names ||= load_yaml('country_names')
+    end
+    
+    private
+    
+    def load_yaml(filename)
+      YAML.load_file(File.expand_path("../data/#{filename}.yml", File.dirname(__FILE__)))
+    end
+  end
 end

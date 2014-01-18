@@ -14,7 +14,7 @@ class Address
   attribute :geolocation,  Array
   
   def postal_address
-    PostalAddress.new(self.attributes).to_s
+    Postal::Address.new(self.attributes).to_s
   end
 end
 
@@ -33,7 +33,7 @@ describe Address do
   }
   
   it "should work" do
-    PostalAddress.home_country = 'us'
+    Postal.home_country = 'us'
     address.postal_address.must_equal "Tobias Füncke\n101 Broadway\nNew York City NY 10002"
   end
 end

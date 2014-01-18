@@ -1,3 +1,6 @@
+# http://www.addressdoctor.com/en/countries-data/address-formats.html
+
+
 --- 
 ae: "%{recipient}\n%{street}\n%{zip} %{city}\n%{country}"
 ar: "%{recipient}\n%{street}\n%{zip} %{city}\n%{state}\n%{country}"
