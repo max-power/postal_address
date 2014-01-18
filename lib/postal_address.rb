@@ -1,7 +1,8 @@
 require "yaml"
 require "postal_address/version"
 require "postal_address/address"
-require "postal_address/address_formatter"
+require "postal_address/formatters/text"
+require "postal_address/formatters/html"
 
 module Postal
   class << self
@@ -9,6 +10,10 @@ module Postal
     
     def home_country=(code)
       @home_country = sanitize(code)
+    end
+    
+    def home_country?(code)
+      home_country == code
     end
 
     def sanitize(code)
