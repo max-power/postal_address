@@ -6,7 +6,7 @@ require "postal_address/formatters/html"
 
 module Postal
   class << self
-    attr_accessor :home_country
+    attr_reader :home_country
     
     def home_country=(code)
       @home_country = sanitize(code)
