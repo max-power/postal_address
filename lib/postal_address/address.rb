@@ -24,9 +24,7 @@ module Postal
     end
   
     def initialize(attrs={})
-      attrs.each do |field, value|
-        self.public_send(:"#{field}=", value) if self.respond_to?(:"#{field}=")
-      end if attrs
+      attrs.each { |k,v| public_send(:"#{k}=", v) if respond_to?(:"#{k}=") } if attrs
     end
     
     def to_h
