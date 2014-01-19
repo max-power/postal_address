@@ -5,7 +5,7 @@ require 'postal_address/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "postal_address"
-  spec.version       = PostalAddress::VERSION
+  spec.version       = Postal::VERSION
   spec.authors       = ["Kevin Melchert"]
   spec.email         = ["kevin.melchert@gmail.com"]
   spec.description   = %q{International postal address formatting}

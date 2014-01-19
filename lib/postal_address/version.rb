@@ -1,3 +1,3 @@
-module PostalAddress
+module Postal
   VERSION = "0.1.2"
 end
