@@ -23,9 +23,12 @@ module Postal
         end
       end
 
-      def content_tag(tag, content='', attributes={})
-        attrs = attributes.map {|k,v| k.to_s + (v ? "=\"#{v}\"" : '') }.unshift('').join(' ')
-        "<#{tag}#{attrs}>#{content}</#{tag}>"
+      def content_tag(tag, content='', attrs={})
+        "<#{tag}#{tag_attributes(attrs)}>#{content}</#{tag}>"
+      end
+      
+      def tag_attributes(attrs)
+        attrs.map { |k,v| v ? %[#{k}="#{v}"] : k }.unshift('').join(' ')
       end
     end
   end
