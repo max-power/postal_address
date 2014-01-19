@@ -13,7 +13,7 @@ module Postal
       private
   
       def address_data
-        @address[:country] = nil if Postal.home_country? @address[:country_code]
+        @address[:country] = nil if Postal.home_country == @address[:country_code]
         @address
       end
 

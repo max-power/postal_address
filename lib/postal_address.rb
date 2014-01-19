@@ -11,10 +11,6 @@ module Postal
     def home_country=(code)
       @home_country = sanitize(code)
     end
-    
-    def home_country?(code)
-      home_country == code
-    end
 
     def sanitize(code)
       code && code.to_s.downcase
