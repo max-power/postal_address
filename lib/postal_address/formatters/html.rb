@@ -2,7 +2,7 @@ module Postal
   module AddressFormatter
     class HTML < Text
       Schema   = 'http://schema.org/PostalAddress'
-      ItemProp = Address::Fields.zip(%w[name streetAddress postalCode addressRegion addressLocality addressCountry])
+      ItemProp = Hash[Address::Fields.zip(%w[name streetAddress postalCode addressRegion addressLocality addressCountry])]
 
       def render(params={})
         content_tag((params.delete(:tag) || :p), super.gsub("\n", "<br>"), params.merge(itemscope: nil, itemtype: Schema))
