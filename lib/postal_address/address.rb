@@ -3,17 +3,6 @@ module Postal
     Fields = [:recipient, :street, :zip, :state, :city, :country, :country_code]
   
     attr_accessor *Fields
-    
-    alias_method :name=,           :recipient=
-    alias_method :street_address=, :street=
-    alias_method :locality=,       :city=
-    alias_method :zip_code=,       :zip=
-    alias_method :postal_code=,    :zip=
-    alias_method :postcode=,       :zip=
-    alias_method :region=,         :state=
-    alias_method :province=,       :state=
-    alias_method :territory=,      :state=
-    alias_method :administrative_area_level_1=, :state=
         
     def country_code=(code)
       @country_code = Postal.sanitize(code)
