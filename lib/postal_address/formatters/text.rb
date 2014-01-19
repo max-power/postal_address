@@ -1,7 +1,7 @@
 module Postal
   module AddressFormatter
     class Text
-      # expects any hash with the fields names of address
+      # expects any hash with the 7 keys from Postal::Address::Fields
       def initialize(address)
         @address = address
       end
