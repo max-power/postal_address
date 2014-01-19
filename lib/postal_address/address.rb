@@ -22,13 +22,13 @@ module Postal
     end
   
     def initialize(attrs={})
-      attrs.each do |attr, value|
-        self.public_send(:"#{attr}=", value) if self.respond_to?(:"#{attr}=")
+      attrs.each do |field, value|
+        self.public_send(:"#{field}=", value) if self.respond_to?(:"#{field}=")
       end if attrs
     end
     
     def to_h
-      Fields.each_with_object({}) { |key, hash| hash[key] = public_send(key) }
+      Fields.each_with_object({}) { |field, hash| hash[field] = public_send(field) }
     end
 
     def to_s
