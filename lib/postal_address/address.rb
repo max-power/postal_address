@@ -28,9 +28,7 @@ module Postal
     end
     
     def to_h
-      Fields.each_with_object({}) do |key, hash|
-        hash[key] = public_send(key)
-      end
+      Fields.each_with_object({}) { |key, hash| hash[key] = public_send(key) }
     end
 
     def to_s
