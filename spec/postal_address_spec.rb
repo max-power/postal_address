@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 require 'spec_helper'
 
-describe PostalAddress do
+describe Postal do
   it "should load the formats" do
     Postal.address_formats.wont_be :empty?
     Postal.address_formats.must_be_kind_of Hash
