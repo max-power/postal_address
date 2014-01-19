@@ -3,6 +3,15 @@ module Postal
     Fields = [:recipient, :street, :zip, :state, :city, :country, :country_code]
   
     attr_accessor *Fields
+    
+    alias_method :locality=,    :city=
+    alias_method :zip_code=,    :zip=
+    alias_method :postal_code=, :zip=
+    alias_method :postcode=,    :zip=
+    alias_method :region=,      :state=
+    alias_method :province=,    :state=
+    alias_method :territory=,   :state=
+    alias_method :administrative_area_level_1=, :state=
   
     def initialize(attrs={})
       attrs.each do |attr, value|
@@ -33,7 +42,7 @@ module Postal
     private
     
     def attributes
-      Fields.each_with_object({}) do |key, hash| 
+      Fields.each_with_object({}) do |key, hash|
         hash[key] = public_send(key)
       end
     end
