@@ -1,3 +1,3 @@
 module Postal
-  VERSION = "0.1.5"
+  VERSION = "0.9.0"
 end
