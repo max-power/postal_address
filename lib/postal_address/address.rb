@@ -6,7 +6,7 @@ module Postal
   
     def initialize(attrs={})
       attrs.each do |attr, value|
-        self.public_send("#{attr}=", value) if self.respond_to?("#{attr}=")
+        self.public_send(:"#{attr}=", value) if self.respond_to?(:"#{attr}=")
       end if attrs
     end
     

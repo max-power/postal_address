@@ -13,12 +13,16 @@ module Postal
       private
   
       def address_data
-        @address[:country] = nil if Postal.home_country?(@address[:country_code])
+        @address[:country] = nil if Postal.home_country? @address[:country_code]
         @address
       end
 
       def address_format
-        Postal.address_formats[@address[:country_code]] || Postal.address_formats[@address[:state] ? 'us' : 'de']
+        Postal.address_formats[@address[:country_code]] || default_address_format
+      end
+      
+      def default_address_format
+        Postal.address_formats[@address[:state] ? 'us' : 'de']
       end
     end
   end
