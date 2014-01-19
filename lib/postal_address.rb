@@ -18,17 +18,17 @@ module Postal
     end
     
     def address_formats
-      @address_formats ||= YAML.load_file(pathname(:address_formats))
+      @address_formats ||= YAML.load_file(path_for(:address_formats))
     end
   
     def country_names
-      @country_names ||= YAML.load_file(pathname(:country_names))
+      @country_names ||= YAML.load_file(path_for(:country_names))
     end
     
     private
     
-    def pathname(filename)
-      Pathname.new(__FILE__).dirname.join("..", "data", "#{filename}.yml")
+    def path_for(filename)
+      Pathname.new(__FILE__).dirname.parent + "data" + "#{filename}.yml"
     end
   end
 end
