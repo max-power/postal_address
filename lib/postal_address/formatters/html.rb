@@ -19,7 +19,7 @@ module Postal
 
       def address_data
         super.each_with_object({}) do |(key, value), hash|
-          hash[key] = content_tag(:span, value, itemprop: ItemProp[key]) if value
+          hash[key] = value && content_tag(:span, value, itemprop: ItemProp[key])
         end
       end
 
