@@ -18,8 +18,8 @@ module Postal
       private
 
       def address_data
-        super.each_with_object({}) do |(key, value), hash|
-          hash[key] = value && content_tag(:span, value, itemprop: ItemProp[key])
+        super.each_with_object({}) do |(field, value), hash|
+          hash[field] = value && content_tag(:span, value, itemprop: ItemProp[field])
         end
       end
 
