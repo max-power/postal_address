@@ -28,7 +28,7 @@ module Postal
       end
       
       def tag_attributes(attrs)
-        attrs.map { |k,v| v ? %[#{k}="#{v}"] : k }.unshift('').join(' ')
+        attrs.map { |k,v| v.nil? ? k : %[#{k}="#{v}"] }.unshift('').join(' ')
       end
     end
   end
