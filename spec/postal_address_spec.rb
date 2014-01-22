@@ -1,5 +1,9 @@
 # -*- encoding: utf-8 -*-
-require 'spec_helper'
+require 'rubygems'
+require 'bundler/setup'
+require 'minitest/autorun'
+require 'minitest/spec'
+require 'postal_address'
 
 describe Postal do
   it "should load the formats" do
@@ -80,24 +84,6 @@ describe Postal do
       address.state = nil
       address.to_s.must_equal "Tobias Füncke\n101 Broadway\n10002 New York City"
     end
-    
-    # it "should respond to state aliases" do
-    #   [:region, :province, :territory, :administrative_area_level_1].each do |alias_name|
-    #     address.must_respond_to :"#{alias_name}="
-    #   end
-    # end
-    # 
-    # it "should respond to city aliases" do
-    #   [:locality].each do |alias_name|
-    #     address.must_respond_to :"#{alias_name}="
-    #   end
-    # end
-    # 
-    # it "should respond to zip aliases" do
-    #   [:zip_code, :postal_code, :postcode].each do |alias_name|
-    #     address.must_respond_to :"#{alias_name}="
-    #   end
-    # end
     
     it "should return html" do
       address.to_html.must_equal "<p itemscope itemtype=\"http://schema.org/PostalAddress\"><span itemprop=\"name\">Tobias Füncke</span><br><span itemprop=\"streetAddress\">101 Broadway</span><br><span itemprop=\"addressLocality\">New York City</span> <span itemprop=\"addressRegion\">NY</span> <span itemprop=\"postalCode\">10002</span><br><span itemprop=\"addressCountry\">United States of America</span></p>"
