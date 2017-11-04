@@ -11,8 +11,10 @@ module Postal
         country:   'addressCountry'
       }
 
-      def render(params={})
-        content_tag((params.delete(:tag) || :p), super.gsub("\n", "<br>"), params.merge(itemscope: nil, itemtype: Schema))
+      def render(**params)
+        tag = params.delete(:tag) || :p
+        cnt = super.gsub("\n", "<br>")
+        content_tag tag, cnt, params.merge(itemscope: nil, itemtype: Schema)
       end
 
       private
