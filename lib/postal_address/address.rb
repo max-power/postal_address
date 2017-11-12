@@ -2,12 +2,13 @@ module Postal
   class Address
     Fields = %i(recipient street zip state city country country_code).freeze
   
-    attr_accessor *Fields
+    attr_accessor(*Fields)
 
-    def initialize(**attrs)
-      attrs.each { |k,v| public_send(:"#{k}=", v) if respond_to?(:"#{k}=") }
-    end    
-        
+    def initialize(**attrs, &block)
+      attrs.each { |k,v| public_send("#{k}=", v) if respond_to?("#{k}=") }
+      yield self if block_given?
+    end
+
     def country_code=(code)
       @country_code = Postal.sanitize(code)
     end
