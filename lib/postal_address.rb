@@ -18,11 +18,11 @@ module Postal
     end
     
     def address_formats
-      @address_formats ||= YAML.load_file(path_for(:address_formats))
+      @address_formats ||= YAML.load_file(path_for(:address_formats), aliases: true)
     end
   
     def country_names
-      @country_names ||= YAML.load_file(path_for(:country_names))
+      @country_names ||= YAML.load_file(path_for(:country_names), aliases: true)
     end
     
     private
