@@ -2,7 +2,6 @@
 
 International postal address formatting with HTML Microformats.
 
-[![Build Status](https://travis-ci.org/max-power/postal_address.png)](https://travis-ci.org/max-power/postal_address)
 
 ## Installation
 

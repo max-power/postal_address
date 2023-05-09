@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Kevin Melchert"]
   spec.email         = ["kevin.melchert@gmail.com"]
   spec.description   = %q{International postal address formatting}
-  spec.summary       = %q{International postal address formatting}
-  spec.homepage      = ""
+  spec.summary       = %q{International postal address formatting with HTML Microformats}
+  spec.homepage      = "https://github.com/max-power/postal_address"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
