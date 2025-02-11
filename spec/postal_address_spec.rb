@@ -3,25 +3,23 @@ require 'spec_helper'
 
 describe Postal do
   it "should load the formats" do
-    skip
     _(Postal.address_formats).wont_be :empty?
     _(Postal.address_formats).must_be_kind_of Hash
   end
   
   it "should load the country_name" do
-    skip
     _(Postal.country_names).wont_be :empty?
     _(Postal.country_names).must_be_kind_of Hash
   end
   
   it "should read/write home country" do
     Postal.home_country = :de
-    _(Postal.home_country).must_equal :de
+    _(Postal.home_country).must_equal 'de'
   end
   
   it "should sanititze home country" do
     Postal.home_country = 'DE'
-    _(Postal.home_country).must_equal :de
+    _(Postal.home_country).must_equal 'de'
   end
 
   describe "Instance" do
@@ -30,20 +28,20 @@ describe Postal do
     }
      
     let(:address) do
-      Postal::Address.new({
+      Postal::Address.new(
         recipient: 'Tobias Füncke', 
         street: '101 Broadway', 
         city: 'New York City', 
-        postcode: '10002', 
+        zip: '10002', 
         state: 'NY', 
         country_code: 'us'
-      })
+      )
     end
     
     it "should respond to to_h" do
       r = address.to_h
-      _(respond).must_be_kind_of Hash
-      _(respond).keys.length.must_equal 7
+      _(r).must_be_kind_of Hash
+      _(r.keys.length).must_equal 7
     end
     
     it "should format to US format" do
