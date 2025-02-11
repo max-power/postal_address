@@ -25,12 +25,12 @@ module Postal
       Fields.zip(values).to_h
     end
 
-    def to_s(**params)
-      AddressFormatter::Text.new(to_h).render(params)
+    def to_s(**)
+      AddressFormatter::Text.new(to_h).render(**)
     end
         
-    def to_html(**params)
-      AddressFormatter::HTML.new(to_h).render(params)
+    def to_html(**)
+      AddressFormatter::HTML.new(to_h).render(**)
     end
   end
 end

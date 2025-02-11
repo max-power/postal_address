@@ -14,7 +14,7 @@ module Postal
       def render(**params)
         tagname = params.delete(:tag) || :p
         content = super.gsub("\n", "<br>")
-        tag tagname, content, params.merge(itemscope: nil, itemtype: ItemType)
+        tag tagname, content, **params.merge(itemscope: nil, itemtype: ItemType)
       end
 
       private
