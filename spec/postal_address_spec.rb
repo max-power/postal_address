@@ -95,5 +95,8 @@ describe Postal do
       _(address.to_html(tag: :section, itemprop: 'address')).must_equal "<section itemprop=\"address\" itemscope itemtype=\"http://schema.org/PostalAddress\"><span itemprop=\"name\">Tobias Füncke</span><br><span itemprop=\"streetAddress\">101 Broadway</span><br><span itemprop=\"addressLocality\">New York City</span> <span itemprop=\"addressRegion\">NY</span> <span itemprop=\"postalCode\">10002</span><br><span itemprop=\"addressCountry\">United States of America</span></section>"
     end
 
+    it "should return JSON-LD" do
+      _(address.to_json_ld).must_equal "{\"@context\":\"https://schema.org\",\"@type\":\"PostalAddress\",\"streetAddress\":\"101 Broadway\",\"addressLocality\":\"New York City\",\"addressRegion\":\"NY\",\"postalCode\":\"10002\",\"addressCountry\":\"us\"}"
+    end
   end
 end

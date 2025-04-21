@@ -49,6 +49,18 @@ Or install it yourself as:
       <span itemprop="addressCountry">United States of America</span>
     </p>
     
+    Postal::Address.new(address).to_json_ld
+
+    {
+      "@context": "https://schema.org",
+      "@type": "PostalAddress", 
+      "streetAddress": "101 Broadway",
+      "addressLocality": "New York City", 
+      "addressRegion": "NY",
+      "postalCode": "10002",
+      "addressCountry": "us"
+    }
+    
     
 Set a home country (country names are not display for those addresses)
 

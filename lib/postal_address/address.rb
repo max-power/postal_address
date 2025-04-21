@@ -32,5 +32,9 @@ module Postal
     def to_html(**)
       AddressFormatter::HTML.new(to_h).render(**)
     end
+    
+    def to_json_ld(**)
+      AddressFormatter::JsonLD.new(to_h).render(**)
+    end
   end
 end

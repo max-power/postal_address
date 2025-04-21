@@ -4,6 +4,7 @@ require "postal_address/version"
 require "postal_address/address"
 require "postal_address/formatters/text"
 require "postal_address/formatters/html"
+require "postal_address/formatters/json_ld"
 
 module Postal
   class << self
