@@ -10,7 +10,7 @@ module Postal
       end
 
       def render(**)
-        address_as_json.reject { |k,v| v.nil? || v.empty? }.to_json
+        address_as_json.compact.to_json
       end
       
       private
